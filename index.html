@@ -13,7 +13,7 @@
         function computerPlay(){
             var x = Math.floor((Math.random() * 3) + 1);
             var arrayIndex = (x - 1);
-            const array = ["ROCK", "PAPER", "SCISSOR"];
+            const array = ["ROCK", "PAPER", "SCISSORS"];
             return array[arrayIndex];
         }
 
@@ -22,7 +22,7 @@
             return choice = window.prompt("Rock | Paper | Scissors");  
         }  
         
-        const computerSelection = computerPlay();
+        let computerSelection = computerPlay();
         
         
 
@@ -34,90 +34,50 @@
                     
           for( j; j<= Rounds; j++){
                 var playerSelection = input();
+                computerSelection = computerPlay();
                 
-                /*Get score when game is Drawn*/
-                if (playRound(playerSelection, computerSelection) === "Rock"){
+                /*If Statements to Get scores when game is Draw, Get scores for playerSelection and get scores for computerSelection. */
+                /*Get score when game Round is DRAW!*/
+                if(playRound(playerSelection, computerSelection) === "Draw game " + playerSelection + " cannot beat "+ computerSelection){
                     compterScore = compterScore + 0;
                     playerScore = playerScore + 0;
                     console.log("Draw game " + playerSelection + " cannot beat "+ computerSelection);
-                }
-
-                if (playRound(playerSelection, computerSelection) === "Paper")
-                {
-                    compterScore = compterScore + 0;
-                    playerScore = playerScore + 0;
-                    console.log("Draw game " + playerSelection + " cannot beat "+ computerSelection);
-                }
-
-                if (playRound(playerSelection, computerSelection) === "Scissor")
-                {
-                    compterScore = compterScore + 0;
-                    playerScore = playerScore + 0;
-                }
-                /*End of Get score when Game is Drawn*/
-
-                /* Get score for Rock */
-                if (playRound(playerSelection, computerSelection) === "you loose "+ computerSelection + " beats " + playerSelection)
-                {
-                    compterScore = compterScore + 1;
-                }
-
-                if (playRound(playerSelection, computerSelection) === "you have won "+ playerSelection + " beats " + computerSelection) 
-                {
-                
-                    playerScore = playerScore + 1;
-                }
-            /*End of get score for Rock*/
-            
-            /*Get score for Papper*/
-                if (playRound(playerSelection, computerSelection) === "you have won "+  playerSelection + " beats " + computerSelection )
-                {
-                    playerScore = playerScore + 1;
                     
                 }
 
-                if (playRound(playerSelection, computerSelection) === "you loose "+ computerSelection + " beats " + playerSelection)
-                {
+                /*GET SCORE WHEN COMPUTER WINS */
+                if(playRound(playerSelection, computerSelection) === "You loose "+ computerSelection + " beats " + playerSelection){
                     compterScore = compterScore + 1;
-                    
+                    console.log("You loose "+ computerSelection + " beats " + playerSelection);
                 }
-            /*End of get score for paper */
+                /*GET SCORE WHEN PLAYER WINS*/
+                if(playRound(playerSelection, computerSelection) === "You have won "+ playerSelection + " beats " + computerSelection) 
+                {
                 
-            /*Get score for Scissor*/
-            if (playRound(playerSelection, computerSelection) === "you have won "+  playerSelection + " beats " + computerSelection )
-            {
-                playerScore = playerScore + 1;
-                
-            }
-
-            if (playRound(playerSelection, computerSelection) === "you loose "+ computerSelection + " beats " + playerSelection)
-            {
-                compterScore = compterScore + 1;
-                console.log("you loose "+ computerSelection + " beats " + playerSelection);
-             }
-            /*End of get score for Scissor */
-
-            
+                    playerScore = playerScore + 1;
+                    console.log("You have won "+ playerSelection + " beats " + computerSelection);
+                }
+                        
             /*To display who has won what round*/
             if(compterScore > playerScore){
                 console.log("The computer has won you Round   " +j);
             }
-            else if (playerScore > compterScore){
+            if(playerScore > compterScore){
                console.log(" You have won the computer Round " +j);
             }
-            else 
+            if(compterScore === playerScore) 
                console.log(" You have drawn with computer Round "+j);
-               console.log(computerPlay());
+               
             
 
           }
           /*To return the final result of the game*/
           if(playerScore === compterScore)
-            return "You've played five Rounds of the Rock, Papper, Scissors Game. You have drawn with computer";
+            return "It's a Draw!!! You've played five Rounds of the Rock, Paper, Scissors Game. You have drawn with computer. PRESS Ctrl + R to load a new game.";
           if(playerScore > compterScore)
-            return "Congratulations!!!! You've played five Rounds of the Rock, Papper, Scissors Game. You have won the computer";
+            return "Congratulations!!!! You've played five Rounds of the Rock, Paper, Scissors Game. You have won the computer. PRESS Ctrl + R to load a new game.";
           if(compterScore > playerScore)
-            return "Sorry!! You've played five Rounds of the Rock, Papper, Scissors Game. The computer has won.";
+            return "Sorry!! You've played five Rounds of the Rock, Paper, Scissors Game. The computer has won. PRESS Ctrl + R to load a new game.";
       }
 
 
@@ -166,7 +126,7 @@
                  }
             /*End of Paper play Decision*/
 
-            /*Decision for Scissor*/
+            /*Decision for Scissors*/
 
             if(playerSelection.toUpperCase() === "SCISSOR" && computerSelection === "ROCK")
             {
@@ -180,10 +140,7 @@
             
         }
        
-      
-        console.log(game());
-        /*console.log(playRound(playerSelection, computerSelection));*/     
-
+      console.log(game());  
 
     </script>
     
