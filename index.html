@@ -10,67 +10,179 @@
     <script>
 
 
-function computerPlay(){
+        function computerPlay(){
             var x = Math.floor((Math.random() * 3) + 1);
-            var i = (x - 1);
+            var arrayIndex = (x - 1);
             const array = ["ROCK", "PAPER", "SCISSOR"];
-        
-            return array[i];
+            return array[arrayIndex];
         }
-        const computerSelection = computerPlay();
-        const playerSelection = "Rock";
 
-        function playRound(playerSelection, computerSelection){
+        function input(){   
+            var choice; 
+            return choice = window.prompt("Rock | Paper | Scissors");  
+        }  
+        
+        const computerSelection = computerPlay();
+        
+        
+
+        function game(){
+          const Rounds = 5;
+          var compterScore = 0;
+          var playerScore = 0;
+          var j=1;
+                    
+          for( j; j<= Rounds; j++){
+                var playerSelection = input();
+                
+                /*Get score when game is Drawn*/
+                if (playRound(playerSelection, computerSelection) === "Rock"){
+                    compterScore = compterScore + 0;
+                    playerScore = playerScore + 0;
+                    console.log("Draw game " + playerSelection + " cannot beat "+ computerSelection);
+                }
+
+                if (playRound(playerSelection, computerSelection) === "Paper")
+                {
+                    compterScore = compterScore + 0;
+                    playerScore = playerScore + 0;
+                    console.log("Draw game " + playerSelection + " cannot beat "+ computerSelection);
+                }
+
+                if (playRound(playerSelection, computerSelection) === "Scissor")
+                {
+                    compterScore = compterScore + 0;
+                    playerScore = playerScore + 0;
+                }
+                /*End of Get score when Game is Drawn*/
+
+                /* Get score for Rock */
+                if (playRound(playerSelection, computerSelection) === "you loose "+ computerSelection + " beats " + playerSelection)
+                {
+                    compterScore = compterScore + 1;
+                }
+
+                if (playRound(playerSelection, computerSelection) === "you have won "+ playerSelection + " beats " + computerSelection) 
+                {
+                
+                    playerScore = playerScore + 1;
+                }
+            /*End of get score for Rock*/
+            
+            /*Get score for Papper*/
+                if (playRound(playerSelection, computerSelection) === "you have won "+  playerSelection + " beats " + computerSelection )
+                {
+                    playerScore = playerScore + 1;
+                    
+                }
+
+                if (playRound(playerSelection, computerSelection) === "you loose "+ computerSelection + " beats " + playerSelection)
+                {
+                    compterScore = compterScore + 1;
+                    
+                }
+            /*End of get score for paper */
+                
+            /*Get score for Scissor*/
+            if (playRound(playerSelection, computerSelection) === "you have won "+  playerSelection + " beats " + computerSelection )
+            {
+                playerScore = playerScore + 1;
+                
+            }
+
+            if (playRound(playerSelection, computerSelection) === "you loose "+ computerSelection + " beats " + playerSelection)
+            {
+                compterScore = compterScore + 1;
+                console.log("you loose "+ computerSelection + " beats " + playerSelection);
+             }
+            /*End of get score for Scissor */
+
+            
+            /*To display who has won what round*/
+            if(compterScore > playerScore){
+                console.log("The computer has won you Round   " +j);
+            }
+            else if (playerScore > compterScore){
+               console.log(" You have won the computer Round " +j);
+            }
+            else 
+               console.log(" You have drawn with computer Round "+j);
+               console.log(computerPlay());
+            
+
+          }
+          /*To return the final result of the game*/
+          if(playerScore === compterScore)
+            return "You've played five Rounds of the Rock, Papper, Scissors Game. You have drawn with computer";
+          if(playerScore > compterScore)
+            return "Congratulations!!!! You've played five Rounds of the Rock, Papper, Scissors Game. You have won the computer";
+          if(compterScore > playerScore)
+            return "Sorry!! You've played five Rounds of the Rock, Papper, Scissors Game. The computer has won.";
+      }
+
+
+
+        /*Function to decide the winner of each round.*/
+        function playRound(playerSelection, computerSelection)
+        {
             /*Statements of a draw game*/
-            if(playerSelection.toUpperCase() === "ROCK" && computerSelection === "ROCK"){
-                return "Draw game " + playerSelection + " cannot beat "+ computerSelection;
-            }
-            if(playerSelection.toUpperCase() === "PAPER" && computerSelection === "PAPER"){
-                return "Draw game " + playerSelection + " cannot beat "+ computerSelection;
-            }
-            if(playerSelection.toUpperCase() === "SCISSOR" && computerSelection === "SCISSOR"){
-                return "Draw game " + playerSelection + " cannot beat "+ computerSelection;
-            }
+            if(playerSelection.toUpperCase() === "ROCK" && computerSelection === "ROCK")
+                {
+                    return "Draw game " + playerSelection + " cannot beat "+ computerSelection;
+                }
+
+            if(playerSelection.toUpperCase() === "PAPER" && computerSelection === "PAPER")
+                {
+                    return "Draw game " + playerSelection + " cannot beat "+ computerSelection;
+                }
+
+            if(playerSelection.toUpperCase() === "SCISSOR" && computerSelection === "SCISSOR")
+                {
+                    return "Draw game " + playerSelection + " cannot beat "+ computerSelection;
+                }
             /*End of draw game statements*/
             
             /*Decisions for Rock*/
-            if(playerSelection.toUpperCase() === "ROCK" && computerSelection === "PAPER"){
-                return "you loose "+ computerSelection + " beats " + playerSelection;
-            }
-            if(playerSelection.toUpperCase() === "ROCK" && computerSelection === "SCISSOR"){
-                return "you have won "+ playerSelection + " beats " + computerSelection;
-            }
+            if(playerSelection.toUpperCase() === "ROCK" && computerSelection === "PAPER")
+                {
+                    return "You loose "+ computerSelection + " beats " + playerSelection;
+                }
+
+            if(playerSelection.toUpperCase() === "ROCK" && computerSelection === "SCISSOR")
+                {
+                    return "You have won "+ playerSelection + " beats " + computerSelection;
+                }
             /*End of Rock play Decsisions*/
 
             /*Decisions for paper*/
-            if(playerSelection.toUpperCase() === "PAPER" && computerSelection === "ROCK"){
-                return "you have won "+  playerSelection + " beats " + computerSelection ;
-            }
-            if(playerSelection.toUpperCase() === "PAPER" && computerSelection === "SCISSOR"){
-                return "you loose "+  computerSelection + " beats " + playerSelection;
-            }
+            if(playerSelection.toUpperCase() === "PAPER" && computerSelection === "ROCK")
+                {
+                    return "You have won "+  playerSelection + " beats " + computerSelection ;
+                }
+
+            if(playerSelection.toUpperCase() === "PAPER" && computerSelection === "SCISSOR")
+                {
+                    return "You loose "+  computerSelection + " beats " + playerSelection;
+                 }
             /*End of Paper play Decision*/
 
             /*Decision for Scissor*/
 
-            if(playerSelection.toUpperCase() === "SCISSOR" && computerSelection === "ROCK"){
-                return "you loose "+  computerSelection + " beats " + playerSelection;
+            if(playerSelection.toUpperCase() === "SCISSOR" && computerSelection === "ROCK")
+            {
+                return "You loose "+  computerSelection + " beats " + playerSelection;
             }
 
-            if(playerSelection.toUpperCase() === "SCISSOR" && computerSelection === "PAPER"){
-                return "you have won "+ playerSelection  + " beats " + computerSelection;
+            if(playerSelection.toUpperCase() === "SCISSOR" && computerSelection === "PAPER")
+            {
+                return "You have won "+ playerSelection  + " beats " + computerSelection;
             }
-
-
-
-
+            
         }
+       
       
-        
-        console.log(playRound(playerSelection, computerSelection));
-
-
-        
+        console.log(game());
+        /*console.log(playRound(playerSelection, computerSelection));*/     
 
 
     </script>
